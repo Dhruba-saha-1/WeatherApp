@@ -11,10 +11,9 @@ export default function UnitsPicker({ unitSystem, setUnitSystem }) {
           setUnitSystem(item);
         }}
         mode="dropdown"
-        
       >
-        <Picker.Item label="C°" value="metric" />
-        <Picker.Item label="F°" value="imperial" />
+        <Picker.Item label="C°" value="metric" color="#1995cf" />
+        <Picker.Item label="F°" value="imperial" color="#f59416" />
       </Picker>
     </View>
   );

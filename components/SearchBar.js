@@ -27,7 +27,7 @@ export default function SearchBar({ location, setLocation }) {
         style={clicked ? styles.textInput_Clicked : styles.textInput_Unclicked}
       >
         <TextInput
-          placeholder="Search"
+          placeholder="Search By City Name"
           value={input}
           onChangeText={setInput}
           onFocus={() => {
@@ -35,29 +35,31 @@ export default function SearchBar({ location, setLocation }) {
           }}
         />
       </View>
-      {clicked && (
-        <TouchableOpacity
-          onPress={() => {
-            search();
-            setClicked(false);
-            Keyboard.dismiss();
-            setInput("");
-          }}
-        >
-          <Feather name="search" size={24} color="black" />
-        </TouchableOpacity>
-      )}
-      {clicked && (
-        <TouchableOpacity
-          onPress={() => {
-            Keyboard.dismiss();
-            setClicked(false);
-            setInput("");
-          }}
-        >
-          <MaterialIcons name="cancel" size={24} color="black" />
-        </TouchableOpacity>
-      )}
+      <View style={styles.icons}>
+        {clicked && (
+          <TouchableOpacity
+            onPress={() => {
+              search();
+              setClicked(false);
+              Keyboard.dismiss();
+              setInput("");
+            }}
+          >
+            <Feather name="search" size={24} color="green" />
+          </TouchableOpacity>
+        )}
+        {clicked && (
+          <TouchableOpacity
+            onPress={() => {
+              Keyboard.dismiss();
+              setClicked(false);
+              setInput("");
+            }}
+          >
+            <MaterialIcons name="cancel" size={24} color="red" />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 }
@@ -78,21 +80,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#d9dbda",
     borderRadius: 15,
     width: "90%",
-   
   },
   textInput_Unclicked: {
     justifyContent: "center",
     width: "95%",
     backgroundColor: "#d9dbda",
     borderRadius: 15,
-    
   },
-  search_icon: {
-    margin: 10,
-  },
-  cancel_icon: {
-    margin: 5,
-    alignItems: "center",
-    justifyContent: "center",
+  icons: {
+    flexDirection: "row",
   },
 });

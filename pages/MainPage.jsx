@@ -17,7 +17,6 @@ import SearchBar from "../components/SearchBar";
 import { colors } from "../utils/Index";
 import { API_KEY, BASE_WEATHER_URL } from "@env";
 
-
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
@@ -26,7 +25,7 @@ export default function MainPage() {
   const [errorMassage, setErrorMassage] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [unitSystem, setUnitSystem] = useState("metric");
-  console.log(30,unitSystem)
+
   //Search
   const [location, setLocation] = useState("");
 
@@ -42,13 +41,11 @@ export default function MainPage() {
   }, [unitSystem, location]);
 
   const onRefresh = React.useCallback(() => {
-   
     setRefreshing(true);
     load();
     setLocation("");
     setErrorMassage(null);
-    setUnitSystem(unitSystem);
-  }, []);
+  }, [unitSystem]);
 
   // @return - A promise which fulfills with an object of type LocationObject
   async function load() {
@@ -67,7 +64,6 @@ export default function MainPage() {
       const result = await response.json();
       if (response.ok) {
         setCurrentWeather(result);
-       
       } else {
         setErrorMassage(result.message);
       }
