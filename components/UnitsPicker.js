@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         top: 20,
       },
       android: {
-        top: 65,
+        top: 70,
       },
     }),
     height: 50,
@@ -33,5 +33,6 @@ const styles = StyleSheet.create({
 
     left: 15,
     position: "absolute",
+    borderRadius: 10,
   },
 });

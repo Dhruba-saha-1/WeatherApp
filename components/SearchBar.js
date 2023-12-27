@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
+import { colors } from "../utils/Index";
 
 export default function SearchBar({ location, setLocation }) {
   const [input, setInput] = useState("");
@@ -23,18 +24,19 @@ export default function SearchBar({ location, setLocation }) {
 
   return (
     <View style={styles.totalSearch}>
-      <View
+      {/* <View
         style={clicked ? styles.textInput_Clicked : styles.textInput_Unclicked}
-      >
-        <TextInput
-          placeholder="Search By City Name"
-          value={input}
-          onChangeText={setInput}
-          onFocus={() => {
-            setClicked(true);
-          }}
-        />
-      </View>
+      > */}
+      <TextInput
+        placeholder="Search By City Name"
+        value={input}
+        onChangeText={setInput}
+        onFocus={() => {
+          setClicked(true);
+        }}
+        style={clicked ? styles.textInput_Clicked : styles.textInput_Unclicked}
+      />
+      {/* </View> */}
       <View style={styles.icons}>
         {clicked && (
           <TouchableOpacity
@@ -67,27 +69,36 @@ export default function SearchBar({ location, setLocation }) {
 const styles = StyleSheet.create({
   totalSearch: {
     width: "95%",
-    padding: 10,
-    backgroundColor: "#d9dbda",
-    borderRadius: 15,
+    // padding: 10,
+    // backgroundColor: "#d9dbda",
+    // borderRadius: 15,
     flexDirection: "row",
     margin: 15,
-    justifyContent: "center",
+    // justifyContent: "center",
+    // alignContent: "center",
     top: 5,
   },
   textInput_Clicked: {
     justifyContent: "center",
-    backgroundColor: "#d9dbda",
-    borderRadius: 15,
-    width: "90%",
+    backgroundColor: colors.INPUT_CONTAINER,
+    borderRadius: 10,
+    width: "85%",
+    marginRight: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 5,
+    alignSelf: "center",
   },
   textInput_Unclicked: {
     justifyContent: "center",
     width: "95%",
-    backgroundColor: "#d9dbda",
-    borderRadius: 15,
+    backgroundColor: colors.INPUT_CONTAINER,
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 5,
+    alignSelf: "center",
   },
   icons: {
     flexDirection: "row",
+    alignSelf: "center",
   },
 });
